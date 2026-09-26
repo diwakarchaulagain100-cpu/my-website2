@@ -1,0 +1,112 @@
+﻿// ================= MOBILE MENU =================
+
+function toggleMenu() {
+
+  const menu = document.getElementById("navMenu");
+
+  menu.classList.toggle("show");
+
+}
+
+
+// ================= INQUIRY POPUP =================
+
+function openInquiry() {
+
+  document.getElementById("inquiryModal").style.display = "flex";
+
+}
+
+
+function closeInquiry() {
+
+  document.getElementById("inquiryModal").style.display = "none";
+
+}
+
+
+// Close popup when clicking outside
+
+window.onclick = function(event) {
+
+  const modal = document.getElementById("inquiryModal");
+
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+
+};
+
+
+// ================= INQUIRY FORM =================
+
+function sendInquiry(event) {
+
+  event.preventDefault();
+
+  const name =
+    document.getElementById("name").value;
+
+  const company =
+    document.getElementById("company").value;
+
+  const email =
+    document.getElementById("email").value;
+
+  const country =
+    document.getElementById("country").value;
+
+  const product =
+    document.getElementById("product").value;
+
+  const quantity =
+    document.getElementById("quantity").value;
+
+  const message =
+    document.getElementById("message").value;
+
+
+  const subject =
+    "GSD Group Product Inquiry";
+
+
+  const body =
+`Name: ${name}
+
+Company: ${company}
+
+Email: ${email}
+
+Country: ${country}
+
+Product: ${product}
+
+Quantity: ${quantity}
+
+Message:
+${message}`;
+
+
+  const mailto =
+    "mailto:info@gsdgroup.com" +
+    "?subject=" + encodeURIComponent(subject) +
+    "&body=" + encodeURIComponent(body);
+
+
+  window.location.href = mailto;
+
+}
+
+
+// ================= NAV LINK CLOSE =================
+
+document.querySelectorAll("nav a").forEach(function(link) {
+
+  link.addEventListener("click", function() {
+
+    document.getElementById("navMenu")
+      .classList.remove("show");
+
+  });
+
+});
